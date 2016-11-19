@@ -6,7 +6,7 @@
 
     <groupId>me.mervinz</groupId>
     <artifactId>jargser</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <name>Jargser</name>
     <description>A smart command line argument parser for java.</description>
     <url>https://github.com/mofei2816/jargs</url>

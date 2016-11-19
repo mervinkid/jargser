@@ -44,6 +44,9 @@ public class ArgumentParser {
     // parsed command
     private String command = null;
 
+    // parsed command value
+    private String commandValue = null;
+
     // supported commands
     private List<Command> commands = new ArrayList<>();
 
@@ -76,7 +79,7 @@ public class ArgumentParser {
      * Add command setting to parser
      *
      * @param command command
-     * @param desc description
+     * @param desc    description
      * @return instance of parser
      */
     public ArgumentParser addCommand(String command, String desc) {
@@ -108,7 +111,7 @@ public class ArgumentParser {
     /**
      * Add option setting to parser
      *
-     * @param s short flag
+     * @param s    short flag
      * @param flag flag
      * @param desc description
      * @return instance of parser
@@ -120,9 +123,9 @@ public class ArgumentParser {
     /**
      * Add option setting to parser with default value
      *
-     * @param s short flag
-     * @param flag flag
-     * @param desc description
+     * @param s            short flag
+     * @param flag         flag
+     * @param desc         description
      * @param defaultValue default value
      * @return instance of parser
      */
@@ -148,6 +151,11 @@ public class ArgumentParser {
                 if (command.getCommand().equals(args[0])) {
                     this.command = args[0];
                     index++;
+                    // parse command value if it exist.
+                    if (args.length > 1 && !args[1].startsWith("-")) {
+                        this.commandValue = args[1];
+                        index++;
+                    }
                     break;
                 }
             }
@@ -156,12 +164,16 @@ public class ArgumentParser {
         // parse option
         while (index < args.length) {
             if (args[index].startsWith("-")) {
-                if (index + 1 >= args.length || args[index + 1].startsWith("-")) {
-                    index++;
-                    continue;
-                }
+
                 Option option = null;
-                String value = args[index + 1];
+                String value;
+
+                if (index + 1 >= args.length || args[index + 1].startsWith("-")) {
+                    value = "";
+                } else {
+                    value = args[index + 1];
+                }
+
                 if (args[index].startsWith("--")) {
                     // flag
                     String flag = args[index].trim().replaceAll("-", "");
@@ -187,7 +199,7 @@ public class ArgumentParser {
     /**
      * Return value of specified flag.
      *
-     * @param flag argument flag
+     * @param flag option flag
      * @return value
      */
     public String parsedOption(String flag) {
@@ -209,6 +221,25 @@ public class ArgumentParser {
      */
     public String parsedCommand() {
         return command;
+    }
+
+    /**
+     * Return value of command
+     *
+     * @return value
+     */
+    public String parsedCommandValue() {
+        return commandValue;
+    }
+
+    /**
+     * Check option exist
+     *
+     * @param flag option flag
+     * @return true or false
+     */
+    public boolean hasParsedOption(String flag) {
+        return parsedOption(flag) != null;
     }
 
     /**

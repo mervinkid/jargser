@@ -9,20 +9,20 @@ Jargser is a smart command line argument parser for java.
 
 ## Installation
 
-Download [the latest JAR]() or using Maven:
+Download [the latest JAR](http://central.maven.org/maven2/me/mervinz/jargser/0.1.0/jargser-0.1.0.jar) or using Maven:
 
 ```xml
 <dependency>
   <groupId>me.mervinz</groupId>
   <artifactId>jargser</artifactId>
-  <version>0.2.0</version>
+  <version>0.1.0</version>
 </dependency>
 ```
 
 or **Gradle**:
     
 ```groovy
-compile group: 'me.mervinz', name: 'jargser', version: '0.2.0'
+compile group: 'me.mervinz', name: 'jargser', version: '0.1.0'
 ```
 
 ## Dependencies

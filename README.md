@@ -139,7 +139,7 @@ For detail see `pom.xml`.
 
 ## Authors
 
-- Mervin | [Website](https://mervinz.me) | [Github](https://github.com/mofei2816) | [Mail](mailto:mofei2816@gmail.com)
+- Mervin | [Website](https://mervinz.me) | [Github](https://github.com/mervinkid) | [Mail](mailto:mofei2816@gmail.com)
 
 ## License
 
